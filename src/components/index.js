@@ -4,5 +4,14 @@ import Loader from "./Loader";
 import NameAddress from "./NameAddress";
 import StyledTabs from "./StyledTabs";
 import StyledTypography from "./StyledTypography";
+import Button from "./Button";
 
-export { AppLayout, Box, Loader, NameAddress, StyledTabs, StyledTypography };
+export {
+  Button,
+  AppLayout,
+  Box,
+  Loader,
+  NameAddress,
+  StyledTabs,
+  StyledTypography,
+};
