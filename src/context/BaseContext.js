@@ -1,10 +1,10 @@
-import React from "react";
 import { createContext, useState, useEffect } from "react";
 import { init, useConnectWallet, useSetChain } from "@web3-onboard/react";
 import injectedModule from "@web3-onboard/injected-wallets";
 import { ethers } from "src/utils/web3Utils";
 
 import { chainsForOnboardJSInit } from "src/utils/supportedChains";
+import { useGetAllProxies } from "src/queries";
 
 const wallets = [injectedModule()];
 
@@ -34,6 +34,9 @@ export const BaseProvider = (props) => {
   const [{ connectedChain }, setChain] = useSetChain();
   const [provider, setProvider] = useState(null);
   const [appNetworkId, setAppNetworkId] = useState("0x5");
+
+  const { data: allProxies, isLoading: proxiesLoading } =
+    useGetAllProxies(appNetworkId);
 
   useEffect(() => {
     if (!wallet?.provider) {
@@ -101,6 +104,7 @@ export const BaseProvider = (props) => {
         setAppNetworkId,
         handleChangeAppNetworkId,
         handleDisconnect,
+        fundraisers: { data: allProxies, loading: proxiesLoading },
         connectWalletCheck,
       }}
     >

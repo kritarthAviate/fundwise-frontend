@@ -5,13 +5,15 @@ import NameAddress from "./NameAddress";
 import StyledTabs from "./StyledTabs";
 import StyledTypography from "./StyledTypography";
 import Button from "./Button";
+import ProjectCard from "./ProjectCard";
 
 export {
-  Button,
   AppLayout,
   Box,
   Loader,
   NameAddress,
   StyledTabs,
   StyledTypography,
+  Button,
+  ProjectCard,
 };

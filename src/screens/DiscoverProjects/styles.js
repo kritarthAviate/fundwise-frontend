@@ -1,5 +1,17 @@
 import styled from "styled-components";
 
-// import { colors } from 'src/utils/colors';
+// import { colors } from "src/utils/colors";
 
-export const Container = styled.div``;
+export const CardListWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 40px;
+
+  @media (max-width: 960px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 720px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+`;
