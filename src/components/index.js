@@ -19,5 +19,5 @@ export {
   Button,
   ProjectCard,
   PercentageBar,
-  FormFields
+  FormFields,
 };

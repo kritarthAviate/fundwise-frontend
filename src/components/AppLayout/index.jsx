@@ -15,6 +15,13 @@ const AppLayout = ({ Component, pageProps }) => {
       </>
     );
 
+  // if (router.pathname === "/create/fundraiser")
+  //     return (
+  //       <>
+  //         <Component {...pageProps} />
+  //       </>
+  //     );
+
   return (
     <>
       <AppHeader />

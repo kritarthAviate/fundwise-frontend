@@ -1,11 +1,10 @@
-import styled from "styled-components";
 import Autocomplete from "@mui/material/Autocomplete";
 import { makeStyles } from "@mui/styles";
 
 import { colors } from "src/utils/colors";
 import InputField from "./InputField";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   autocomplete: {
     /* Add your custom styles here */
   },
@@ -75,7 +74,6 @@ const CustomAutocomplete = ({
         clearIndicator: classes.icon,
         popupIndicator: classes.icon,
       }}
-
       {...rest}
       /* Other props */
     />
