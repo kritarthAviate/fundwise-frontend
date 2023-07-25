@@ -7,6 +7,7 @@ import StyledTypography from "./StyledTypography";
 import Button from "./Button";
 import ProjectCard from "./ProjectCard";
 import PercentageBar from "./PercentageBar";
+import FormFields from "./FormFields";
 
 export {
   AppLayout,
@@ -18,4 +19,5 @@ export {
   Button,
   ProjectCard,
   PercentageBar,
+  FormFields
 };
