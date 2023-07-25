@@ -75,3 +75,18 @@ export const useGetAllProxies = (appNetworkId) => {
     }
   );
 };
+
+export const useGetDataFromIpfs = (ipfsLink, options = {}) => {
+  return useQuery(
+    ["ipfs", ipfsLink],
+    async () => {
+      const response = await axios.get(`${ipfsLink}`);
+      return response.data;
+    },
+    {
+      ...options,
+      cacheTime: Infinity,
+      staleTime: Infinity,
+    }
+  );
+};

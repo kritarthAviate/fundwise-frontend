@@ -6,6 +6,7 @@ import StyledTabs from "./StyledTabs";
 import StyledTypography from "./StyledTypography";
 import Button from "./Button";
 import ProjectCard from "./ProjectCard";
+import PercentageBar from "./PercentageBar";
 
 export {
   AppLayout,
@@ -16,4 +17,5 @@ export {
   StyledTypography,
   Button,
   ProjectCard,
+  PercentageBar,
 };
