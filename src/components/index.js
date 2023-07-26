@@ -8,6 +8,7 @@ import Button from "./Button";
 import ProjectCard from "./ProjectCard";
 import PercentageBar from "./PercentageBar";
 import FormFields from "./FormFields";
+import CopyToClipboard from "./CopyToClipboard";
 
 export {
   AppLayout,
@@ -20,4 +21,5 @@ export {
   ProjectCard,
   PercentageBar,
   FormFields,
+  CopyToClipboard,
 };
