@@ -1,9 +1,4 @@
-import styled from "styled-components";
-
-import { StyledTypography } from "src/components";
 import { colors } from "src/utils/colors";
-
-const StatusBox = styled.span``;
 
 export default function Status({ status }) {
   const getColor = () => {
@@ -18,8 +13,6 @@ export default function Status({ status }) {
   return (
     <span
       type="p5"
-      fontColor={color}
-      component="span"
       style={{
         fontSize: "12px",
         borderRadius: "12px",

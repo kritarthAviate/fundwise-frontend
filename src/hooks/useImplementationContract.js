@@ -61,6 +61,7 @@ const useImplementationContract = (address, typeOfFunding) => {
       checkFundsWithdrawn();
       checkIfCertificateClaimed();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ImplementationContractInstance?.amountRaised]);
 
   const donate = async (amount) => {

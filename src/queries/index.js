@@ -137,6 +137,7 @@ export const useGetContributions = (
       return decodedEvents;
     },
     {
+      ...options,
       refetchOnMount: false,
       refetchOnWindowFocus: false,
       refetchOnReconnect: false,

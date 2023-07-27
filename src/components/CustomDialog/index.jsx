@@ -57,7 +57,10 @@ export const DialogTitle = ({ value, handleClose, showClose }) => {
         {value}
       </StyledTypography>
       {showClose && (
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div
+          style={{ display: "flex", alignItems: "center" }}
+          onClick={handleClose}
+        >
           <ArrowBackIosRoundedIcon
             fontSize="large"
             htmlColor={colors.lightGrey}
