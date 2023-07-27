@@ -49,3 +49,10 @@ export const formatDecimalToWei = (_decimalString, _decimal) => {
 export const isValidAddress = (_address) => {
   return _ethers.utils.isAddress(_address);
 };
+
+export const getProxyAddress = (receipt) => {
+  const { events } = receipt;
+  const ProxyCreated = events[events.length - 1];
+
+  return ProxyCreated?.args?.proxyAddress;
+};

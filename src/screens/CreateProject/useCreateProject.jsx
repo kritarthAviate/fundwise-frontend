@@ -78,6 +78,7 @@ const useCreateProject = () => {
         ipfsLink,
         formValues.recipient
       );
+
       router.push(`/f/${address}`);
     } catch (error) {
       console.log({ error });
@@ -237,16 +238,16 @@ const useCreateProject = () => {
   ];
 
   const validateFirstFormOfSection =
-    errors.title ||
-    errors.description ||
-    errors.category ||
-    errors.recipient ||
-    errors.targetAmount ||
-    !formValues.title.trim() ||
-    !formValues.description.trim() ||
-    !formValues.category ||
-    !formValues.recipient.trim() ||
-    !formValues.targetAmount.trim();
+    errors?.title ||
+    errors?.description ||
+    errors?.category ||
+    errors?.recipient ||
+    errors?.targetAmount ||
+    !formValues?.title?.trim() ||
+    !formValues?.description?.trim() ||
+    !formValues?.category ||
+    !formValues?.recipient?.trim() ||
+    !formValues?.targetAmount?.trim();
 
   return {
     handleSubmitForm,
