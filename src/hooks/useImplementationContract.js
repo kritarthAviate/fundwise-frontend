@@ -64,8 +64,13 @@ const useImplementationContract = (address, typeOfFunding) => {
   }, [ImplementationContractInstance?.amountRaised]);
 
   const donate = async (amount) => {
+    const estimatedGas =
+      await ImplementationContractInstance.estimateGas.contribute({
+        value: parseEther(amount),
+      });
     const tx = await ImplementationContractInstance.contribute({
       value: parseEther(amount),
+      gasLimit: estimatedGas.add(estimatedGas.div(9)),
     });
     const receipt = await tx.wait();
     return receipt;
