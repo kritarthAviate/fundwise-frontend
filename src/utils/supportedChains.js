@@ -63,3 +63,16 @@ export const contractsForChain = (chainId) => {
     implementations: chainMapping[chainId].implementations,
   };
 };
+
+export const getExplorerLinkByChainIdForAddress = (chainId, address) => {
+  switch (chainId) {
+    case "0x1":
+      return `https://etherscan.io/address/${address}`;
+    case "0x5":
+      return `https://goerli.etherscan.io/address/${address}`;
+    case "0x89":
+      return `https://polygonscan.com/address/${address}`;
+    default:
+      return "";
+  }
+};

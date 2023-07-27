@@ -3,22 +3,27 @@ import { createIcon } from "@download/blockies";
 import { minifyAddress } from "src/utils/web3Utils";
 import StyledTypography from "src/components/StyledTypography";
 import { NameAddressWrapper } from "./styles";
+import { useContext } from "react";
+import { BaseContext } from "src/context/BaseContext";
+import { getExplorerLinkByChainIdForAddress } from "@/src/utils/supportedChains";
 
 export default function NameAddress({
   imgSize,
   textSize,
-  address = "0xa234bF5AcC3B150907704ce26D855A5638dEF890",
+  address,
   isOnClick = true,
 }) {
-  let icon;
-  if (typeof window === "object") {
-    icon = createIcon({
-      // All options are optional
-      seed: address, // seed used to generate icon data, default: random
-      size: imgSize, // width/height of the icon in blocks, default: 10
-      scale: imgSize, // width/height of each block in pixels, default: 5
-    }).toDataURL();
-  }
+  const { appNetworkId } = useContext(BaseContext);
+  const explorerLink = getExplorerLinkByChainIdForAddress(
+    appNetworkId,
+    address
+  );
+  const icon = createIcon({
+    // All options are optional
+    seed: address, // seed used to generate icon data, default: random
+    // size: 10, // width/height of the icon in blocks, default: 10
+    // scale: 5, // width/height of each block in pixels, default: 5
+  }).toDataURL();
 
   return (
     <NameAddressWrapper
@@ -26,7 +31,7 @@ export default function NameAddress({
         isOnClick
           ? (event) => {
               event.stopPropagation();
-              window.open(`https://goerli.etherscan.io/address/${address}`);
+              window.open(explorerLink, "_blank");
             }
           : () => {}
       }
