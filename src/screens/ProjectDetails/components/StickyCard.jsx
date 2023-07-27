@@ -44,6 +44,7 @@ const StickyCard = ({
   const queryClient = useQueryClient();
   const { connectWalletCheck, account } = useContext(BaseContext);
   const [showDonateModal, toggleDonateModal] = useState(false);
+  const [lodingDonate, setLoadingDonate] = useState(false);
   const {
     totalAmountRaisedInWei,
     currencySymbol,
@@ -71,12 +72,19 @@ const StickyCard = ({
     );
 
   const handleDonate = async (amount) => {
-    const walletCheck = await connectWalletCheck();
-    if (!walletCheck) return;
-    await donate(amount);
-    queryClient.invalidateQueries("contributions", proxyAddress);
-    await refetchAmountRaised();
-    toggleDonateModal(false);
+    try {
+      setLoadingDonate(true);
+      const walletCheck = await connectWalletCheck();
+      if (!walletCheck) return;
+      await donate(amount);
+      queryClient.invalidateQueries("contributions", proxyAddress);
+      await refetchAmountRaised();
+      toggleDonateModal(false);
+    } catch (error) {
+      console.log({ error });
+    } finally {
+      setLoadingDonate(false);
+    }
   };
 
   const handleWithdrawClick = async () => {
@@ -138,7 +146,7 @@ const StickyCard = ({
     if (projectStatus === "SUCCESS" && haveIContributed && isLoggedIn) {
       return (
         <Button
-          sx={{width: "100%" }}
+          sx={{ width: "100%" }}
           size={"large"}
           onClick={handleClaimCertificate}
           variant="multi"
@@ -171,7 +179,10 @@ const StickyCard = ({
       </StyledTypography>
 
       <div className="buttons_section">
-        <CopyToClipboard value={window.location.href} text={"Click to copy link to this page"}>
+        <CopyToClipboard
+          value={window.location.href}
+          text={"Click to copy link to this page"}
+        >
           <Button style={{ width: "100%" }} size={"large"}>
             Share fundraiser
           </Button>
@@ -186,6 +197,7 @@ const StickyCard = ({
         decimals={decimals}
         showModal={showDonateModal}
         toggleModal={toggleDonateModal}
+        loading={lodingDonate}
       />
     </StickyCardContainer>
   );

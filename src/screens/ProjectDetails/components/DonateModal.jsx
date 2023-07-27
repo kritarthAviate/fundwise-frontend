@@ -18,6 +18,7 @@ const DonateModal = ({
   currencySymbol,
   decimals,
   handleDonate,
+  loading,
 }) => {
   const [value, setValue] = useState("");
 
@@ -56,13 +57,18 @@ const DonateModal = ({
         </div>
 
         <DialogFooter>
-          <Button onClick={() => toggleModal(false)} sx={{ flex: 1 }}>
+          <Button
+            onClick={() => toggleModal(false)}
+            sx={{ flex: 1 }}
+            disabled={loading}
+          >
             Back
           </Button>
           <Button
             variant="multi"
             onClick={() => handleDonate(value)}
             sx={{ flex: 1 }}
+            loading={loading}
           >
             Donate
           </Button>
