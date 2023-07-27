@@ -1,10 +1,12 @@
-import { useGetDataFromIpfs } from "src/queries";
-import { colors } from "src/utils/colors";
-import { NameAddress, StyledTypography, Box } from "src/components";
-import { useImplementationContract } from "src/hooks";
+import { useContext } from "react";
+
+import { NameAddress, StyledTypography } from "src/components";
 import Status from "./components/Status";
 import SocialIconsComp from "./components/SocialIconsComp";
 import StickyCard from "./components/StickyCard";
+import { useGetContributions, useGetDataFromIpfs } from "src/queries";
+import { BaseContext } from "src/context/BaseContext";
+import { colors } from "src/utils/colors";
 import { getSocialPlatformsData } from "./helper";
 import {
   Container,
@@ -13,6 +15,8 @@ import {
   Seperator,
   TitleSection,
 } from "./styles";
+import Box from "src/components/Box";
+import { useImplementationContract } from "src/hooks";
 
 export default function ProjectDetails({ fundraiserData }) {
   const { ipfsLink, proxyAddress, receiverAddress, typeOfFunding } =
@@ -23,8 +27,15 @@ export default function ProjectDetails({ fundraiserData }) {
     typeOfFunding
   );
 
+  const { appNetworkId } = useContext(BaseContext);
+
   const { data: ipfsData, isLoading: ipfsLoading } =
     useGetDataFromIpfs(ipfsLink);
+  const { data: contributionsData } = useGetContributions(
+    proxyAddress,
+    typeOfFunding,
+    appNetworkId
+  );
 
   if (ipfsLoading || !ipfsData) return;
 
@@ -108,7 +119,9 @@ export default function ProjectDetails({ fundraiserData }) {
             </StyledTypography>
           </div>
         </LeftContainer>
-        <StickyCard {...{ ...fundraiserData, ...ipfsData }} />
+        <StickyCard
+          {...{ ...fundraiserData, ...ipfsData, contributionsData }}
+        />
       </BodyContainer>
     </Container>
   );

@@ -28,6 +28,18 @@ export const parseProxyCreatedEvent = (event) => {
   return result;
 };
 
+export const parseContributionEvent = (event) => {
+  const { args } = event;
+  const [contributor, amount] = args;
+
+  const result = {
+    amount: amount.toString(),
+    contributorAddress: contributor,
+  };
+
+  return result;
+};
+
 export const useGetAllProxies = (appNetworkId) => {
   return useQuery(
     "allProxies",
@@ -51,7 +63,7 @@ export const useGetAllProxies = (appNetworkId) => {
           params: [
             {
               address: factoryContract.addresses,
-              fromBlock: "0x429d3b",
+              fromBlock: factoryContract.fromBlock,
               toBlock: "latest",
               topics: [topic],
             },
@@ -64,6 +76,65 @@ export const useGetAllProxies = (appNetworkId) => {
         const decodedEvent = contractInterface.parseLog(event);
         return {
           ...parseProxyCreatedEvent(decodedEvent),
+        };
+      });
+      console.log("decodedEvents", decodedEvents);
+      return decodedEvents;
+    },
+    {
+      refetchOnMount: false,
+      refetchOnWindowFocus: true,
+      refetchOnReconnect: false,
+    }
+  );
+};
+
+export const useGetContributions = (
+  proxyAddress,
+  typeOfFunding,
+  appNetworkId,
+  options = {}
+) => {
+  return useQuery(
+    ["contributions", proxyAddress],
+    async () => {
+      const { rpcUrl, implementations } = chainMapping[appNetworkId];
+      const concernedImplementation = implementations[typeOfFunding];
+
+      const contractInterface = new ethers.utils.Interface(
+        concernedImplementation.abi
+      );
+      const topic = contractInterface.getEventTopic("Contribute");
+
+      const options = {
+        method: "POST",
+        url: rpcUrl,
+        headers: {
+          accept: "application/json",
+          "content-type": "application/json",
+        },
+        data: {
+          id: 1,
+          jsonrpc: "2.0",
+          method: "eth_getLogs",
+          params: [
+            {
+              address: proxyAddress,
+              fromBlock: concernedImplementation.fromBlock,
+              toBlock: "latest",
+              topics: [topic],
+            },
+          ],
+        },
+      };
+
+      const response = await axios.request(options);
+      console.log({ response });
+      const decodedEvents = response.data.result.map((event) => {
+        const decodedEvent = contractInterface.parseLog(event);
+        console.log("GetContributions", { decodedEvent });
+        return {
+          ...parseContributionEvent(decodedEvent),
         };
       });
       return decodedEvents;
