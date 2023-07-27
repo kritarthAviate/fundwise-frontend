@@ -16,18 +16,18 @@ export const chainMapping = {
     rpcUrl: `https://eth-goerli.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_GOERLI_PRIVATE_KEY_ALCHEMY}`,
     logo: "/go_icon.png",
     factoryContract: {
-      address: "0x3680488E6EB8c75A2F0f2304C3AD1618FB4b7eF4",
-      fromBlock: "0x8FB637",
+      address: "0x2d23B4c6a07e82d8c168581316b397B196260278",
+      fromBlock: "0x8FB78C",
       abi: FactoryContractABI.abi,
     },
     implementations: {
       1: {
-        address: "0xe0fDBF53D50b03F12D169f6634828E3910587cd3",
+        address: "0x3ee1fd4404782dcb370B64291144Ba203a95c956",
         abi: FundWithEtherContract.abi,
         type: 1, // ETHER TYPE,
         symbol: "ETH",
         decimals: 18,
-        fromBlock: "0x8FB636",
+        fromBlock: "0x8FB78B",
       },
     },
   },
