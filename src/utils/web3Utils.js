@@ -1,5 +1,4 @@
 import { ethers as _ethers, BigNumber, utils } from "ethers";
-
 export const ethers = _ethers;
 
 export const extractDecimalNumber = (_value, _maxDecimals = 6) => {

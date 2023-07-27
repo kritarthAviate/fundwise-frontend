@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { Box, Button } from "@mui/material";
+import { Button } from "@mui/material";
 
 import { colors } from "src/utils/colors";
 
