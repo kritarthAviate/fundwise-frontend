@@ -1,7 +1,6 @@
 import { StyledTabs, StyledTab } from "./styles";
 
 const StyledTabsComp = ({ value, handleChange, options }) => {
-  console.log({ options });
   return (
     <div>
       <StyledTabs value={value} onChange={handleChange}>

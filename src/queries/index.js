@@ -78,7 +78,6 @@ export const useGetAllProxies = (appNetworkId) => {
           ...parseProxyCreatedEvent(decodedEvent),
         };
       });
-      console.log("decodedEvents", decodedEvents);
       return decodedEvents;
     },
     {
@@ -129,10 +128,8 @@ export const useGetContributions = (
       };
 
       const response = await axios.request(options);
-      console.log({ response });
       const decodedEvents = response.data.result.map((event) => {
         const decodedEvent = contractInterface.parseLog(event);
-        console.log("GetContributions", { decodedEvent });
         return {
           ...parseContributionEvent(decodedEvent),
         };

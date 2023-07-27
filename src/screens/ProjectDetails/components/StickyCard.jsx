@@ -60,7 +60,6 @@ const StickyCard = ({
   } = useImplementationContract(proxyAddress, typeOfFunding);
   const fundType = { symbol: currencySymbol };
 
-  console.log({ contributionsData });
   const isLoggedIn = !!account;
 
   const isMyfundraiser =
@@ -137,12 +136,6 @@ const StickyCard = ({
   };
 
   const renderCertificateButton = () => {
-    console.log({
-      projectStatus,
-      haveIContributed,
-      isLoggedIn,
-      alreadyClaimed: false,
-    });
     if (projectStatus === "SUCCESS" && haveIContributed && isLoggedIn) {
       return (
         <Button

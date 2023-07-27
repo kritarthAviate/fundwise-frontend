@@ -6,7 +6,6 @@ import { CardListWrapper } from "./styles";
 
 export default function DiscoverProjects() {
   const { fundraisers } = useContext(BaseContext);
-  console.log({ fundraisers });
   const { data, loading } = fundraisers;
 
   const isData = data?.length > 0;

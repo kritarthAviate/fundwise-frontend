@@ -9,7 +9,6 @@ export default function MyFundraisers() {
   const [value, setValue] = useState("1");
 
   const handleChange = (event, newValue) => {
-    console.log({ newValue });
     setValue(newValue);
   };
 

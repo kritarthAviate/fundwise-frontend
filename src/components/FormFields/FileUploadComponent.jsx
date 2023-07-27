@@ -44,10 +44,8 @@ const FileUploadComponent = ({
       event.target.value = null;
       return;
     }
-    console.log("uploading...");
     setTextToDisplay("Uploading...");
     const ipfsLink = await uploadFile(selectedFile);
-    console.log("uploaded: ", ipfsLink);
     setTextToDisplay(selectedFile?.name || "Uploaded");
     setUploadedLink(ipfsLink);
   };

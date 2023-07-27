@@ -51,8 +51,6 @@ const useCreateProject = () => {
       if (!walletCheck) return;
       setLoading(true);
 
-      console.log({ formValues });
-
       const jsonToUpload = {
         title: formValues.title,
         category: formValues.category,
@@ -67,11 +65,7 @@ const useCreateProject = () => {
         videoUrl: formValues.videoUrl,
       };
 
-      console.log("uploading json to ipfs");
-
       const ipfsLink = await uploadFile(JSON.stringify(jsonToUpload));
-
-      console.log("ipfs link", ipfsLink);
 
       const address = await createCrowdfunding(
         formValues.targetAmount,
@@ -159,7 +153,6 @@ const useCreateProject = () => {
   const validateRequired = (event) => {
     const value = event.target.value;
     const key = event.target.name;
-    console.log({ value, key });
     if (!value) {
       setErrors({
         ...errors,
