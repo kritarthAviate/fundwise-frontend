@@ -138,7 +138,7 @@ const StickyCard = ({
     if (projectStatus === "SUCCESS" && haveIContributed && isLoggedIn) {
       return (
         <Button
-          sx={{ marginTop: "10px", width: "100%" }}
+          sx={{width: "100%" }}
           size={"large"}
           onClick={handleClaimCertificate}
           variant="multi"
@@ -171,7 +171,7 @@ const StickyCard = ({
       </StyledTypography>
 
       <div className="buttons_section">
-        <CopyToClipboard text={"Click to copy link to this page"}>
+        <CopyToClipboard value={window.location.href} text={"Click to copy link to this page"}>
           <Button style={{ width: "100%" }} size={"large"}>
             Share fundraiser
           </Button>
