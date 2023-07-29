@@ -51,6 +51,7 @@ export const isValidAddress = (_address) => {
 
 export const getProxyAddress = (receipt) => {
   const { events } = receipt;
+  console.log({ events });
   const ProxyCreated = events[events.length - 1];
 
   return ProxyCreated?.args?.proxyAddress;

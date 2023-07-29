@@ -13,8 +13,8 @@ const useFactoryContract = () => {
   const factoryContract = contractsForChain(appNetworkId).factoryContract;
 
   const { contract: FactoryContract } = useContract(
-    factoryContract.address,
-    factoryContract.abi
+    factoryContract?.address,
+    factoryContract?.abi
   );
 
   const createCrowdfunding = async (
@@ -23,11 +23,21 @@ const useFactoryContract = () => {
     receiverAddress,
     typeofFunding = 1
   ) => {
-    const tx = await FactoryContract.createFund(
+    const gasLimit = await FactoryContract.estimateGas.createFund(
       typeofFunding,
       parseEther(targetAmount),
       ipfsHash,
       receiverAddress
+    );
+    const updatedGasLimit = gasLimit.mul(150).div(100);
+    const tx = await FactoryContract.createFund(
+      typeofFunding,
+      parseEther(targetAmount),
+      ipfsHash,
+      receiverAddress,
+      {
+        gasLimit: updatedGasLimit,
+      }
     );
     const receipt = await tx.wait();
     queryClient.invalidateQueries("allProxies");

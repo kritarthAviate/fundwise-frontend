@@ -74,8 +74,8 @@ export const chainsForNetworkSwitcher = Object.values(chainMapping).map(
 
 export const contractsForChain = (chainId) => {
   return {
-    factoryContract: chainMapping[chainId].factoryContract,
-    implementations: chainMapping[chainId].implementations,
+    factoryContract: chainMapping[chainId]?.factoryContract,
+    implementations: chainMapping[chainId]?.implementations,
   };
 };
 

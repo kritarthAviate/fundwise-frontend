@@ -45,7 +45,7 @@ export default function NetworkSwitcher() {
         endIcon={open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
         startIcon={
           <Image
-            src={chainMapping[appNetworkId].logo}
+            src={chainMapping[appNetworkId]?.logo}
             width={"16"}
             height={"16"}
             alt={""}
@@ -61,7 +61,7 @@ export default function NetworkSwitcher() {
           },
         }}
       >
-        {chainMapping[appNetworkId].label}
+        {chainMapping[appNetworkId]?.label}
       </Button>
       <Menu
         id="demo-customized-menu"

@@ -33,7 +33,11 @@ export const BaseProvider = (props) => {
   const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
   const [{ connectedChain }, setChain] = useSetChain();
   const [provider, setProvider] = useState(null);
-  const [appNetworkId, setAppNetworkId] = useState("0x5");
+  const chainLocalStorage =
+    typeof window !== "undefined"
+      ? window.localStorage.getItem("chain")
+      : "0x5";
+  const [appNetworkId, setAppNetworkId] = useState(chainLocalStorage);
 
   const { data: allProxies, isLoading: proxiesLoading } =
     useGetAllProxies(appNetworkId);
@@ -55,6 +59,7 @@ export const BaseProvider = (props) => {
   };
 
   const handleChangeAppNetworkId = (newChainId) => {
+    window.localStorage.setItem("chain", newChainId);
     setAppNetworkId(newChainId);
   };
 
