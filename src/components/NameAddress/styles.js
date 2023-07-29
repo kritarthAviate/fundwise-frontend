@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 export const NameAddressWrapper = styled.div`
   display: flex;

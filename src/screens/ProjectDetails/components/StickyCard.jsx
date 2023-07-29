@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useQueryClient } from "react-query";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { formatUnits, getAddress } from "ethers/lib/utils";
 
 import {

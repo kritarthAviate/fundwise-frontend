@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { Dialog as MUIDialog } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
