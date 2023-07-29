@@ -1,9 +1,9 @@
-import Dashboard from 'src/screens/Dashboard'
+import Dashboard from "src/screens/Dashboard";
 
 export default function DashboardPage() {
   return (
     <>
       <Dashboard />
     </>
-  )
+  );
 }
