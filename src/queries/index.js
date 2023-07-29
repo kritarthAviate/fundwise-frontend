@@ -42,7 +42,7 @@ export const parseContributionEvent = (event) => {
 
 export const useGetAllProxies = (appNetworkId) => {
   return useQuery(
-    "allProxies",
+    ["allProxies", appNetworkId],
     async () => {
       const { factoryContract, rpcUrl } = chainMapping[appNetworkId];
 
@@ -95,7 +95,7 @@ export const useGetContributions = (
   options = {}
 ) => {
   return useQuery(
-    ["contributions", proxyAddress],
+    ["contributions", proxyAddress, appNetworkId],
     async () => {
       const { rpcUrl, implementations } = chainMapping[appNetworkId];
       const concernedImplementation = implementations[typeOfFunding];
