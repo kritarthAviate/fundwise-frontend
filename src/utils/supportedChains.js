@@ -2,13 +2,13 @@ import FactoryContractABI from "src/abis/FactoryContract.json";
 import FundWithEtherContract from "src/abis/FundWithEtherContract.json";
 
 export const chainMapping = {
-  "0x1": {
-    id: "0x1",
-    token: "ETH",
-    label: "Ethereum",
-    rpcUrl: `https://eth-mainnet.alchemyapi.io/v2/${process.env.NEXT_PUBLIC_MAINNET_PRIVATE_KEY_ALCHEMY}`,
-    logo: "/eth_icon.svg",
-  },
+  // "0x1": {
+  //   id: "0x1",
+  //   token: "ETH",
+  //   label: "Ethereum",
+  //   rpcUrl: `https://eth-mainnet.alchemyapi.io/v2/${process.env.NEXT_PUBLIC_MAINNET_PRIVATE_KEY_ALCHEMY}`,
+  //   logo: "/eth_icon.svg",
+  // },
   "0x5": {
     id: "0x5",
     token: "gETH",
@@ -37,6 +37,21 @@ export const chainMapping = {
     label: "Polygon",
     rpcUrl: `https://polygon-mainnet.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_POLYGON_PRIVATE_KEY_ALCHEMY}`,
     logo: "/polygon_icon.svg",
+    factoryContract: {
+      address: "0xb65EdE3AeD265c04845A149637E6d78387c12061",
+      fromBlock: "0x2B84E81",
+      abi: FactoryContractABI.abi,
+    },
+    implementations: {
+      1: {
+        address: "0xb23133a15e198081F52133F9e001bD3149A3CdA4",
+        abi: FundWithEtherContract.abi,
+        type: 1, // ETHER TYPE,
+        symbol: "MATIC",
+        decimals: 18,
+        fromBlock: "0x45633128",
+      },
+    },
   },
 };
 
