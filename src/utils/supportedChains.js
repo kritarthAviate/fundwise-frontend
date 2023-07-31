@@ -31,28 +31,28 @@ export const chainMapping = {
       },
     },
   },
-  "0x89": {
-    id: "0x89",
-    token: "MATIC",
-    label: "Polygon",
-    rpcUrl: `https://polygon-mainnet.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_POLYGON_PRIVATE_KEY_ALCHEMY}`,
-    logo: "/polygon_icon.svg",
-    factoryContract: {
-      address: "0xb65EdE3AeD265c04845A149637E6d78387c12061",
-      fromBlock: "0x2B84E81",
-      abi: FactoryContractABI.abi,
-    },
-    implementations: {
-      1: {
-        address: "0xb23133a15e198081F52133F9e001bD3149A3CdA4",
-        abi: FundWithEtherContract.abi,
-        type: 1, // ETHER TYPE,
-        symbol: "MATIC",
-        decimals: 18,
-        fromBlock: "0x45633128",
-      },
-    },
-  },
+  // "0x89": {
+  //   id: "0x89",
+  //   token: "MATIC",
+  //   label: "Polygon",
+  //   rpcUrl: `https://polygon-mainnet.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_POLYGON_PRIVATE_KEY_ALCHEMY}`,
+  //   logo: "/polygon_icon.svg",
+  //   factoryContract: {
+  //     address: "0xb65EdE3AeD265c04845A149637E6d78387c12061",
+  //     fromBlock: "0x2B84E81",
+  //     abi: FactoryContractABI.abi,
+  //   },
+  //   implementations: {
+  //     1: {
+  //       address: "0xb23133a15e198081F52133F9e001bD3149A3CdA4",
+  //       abi: FundWithEtherContract.abi,
+  //       type: 1, // ETHER TYPE,
+  //       symbol: "MATIC",
+  //       decimals: 18,
+  //       fromBlock: "0x45633128",
+  //     },
+  //   },
+  // },
 };
 
 export const chainsForOnboardJSInit = Object.values(chainMapping).map(
